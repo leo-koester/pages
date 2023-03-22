@@ -11,6 +11,20 @@ let output = "";
 let lines = [];
 
 
+/**
+ * In case of any error, let's override "window.onerror" to make it
+ * shows us what went wrong inside the page itself
+ * */
+window.onerror = function (a, b, c, d){
+    if ( debugging.initialized )
+        debugging.write("", [`<em>${a}\n${b}:${c}@${d}</em>`]);
+    else
+        alert( `${a}\n${b}\n${c}\n${d}` );
+    return false;
+};
+
+
+
 const make = ( type, attributes, parent ) => {
     const obj = document.createElement(type);
 
@@ -57,18 +71,6 @@ const makeCSS = ( styles ) => {
 }
 
 
-
-/**
- * In case of any error, let's override "window.onerror" to make it
- * shows us what went wrong inside the page itself
- * */
-window.onerror = function (a, b, c, d){
-    if ( debugging.initialized )
-        debugging.write("", [`<em>${a}\n${b}:${c}@${d}</em>`]);
-    else
-        alert( `${a}\n${b}\n${c}\n${d}` );
-    return false;
-};
 
 
 
@@ -147,6 +149,7 @@ const debugging = {
     }
 };
 
+debugging.initialize();
 
 
 
