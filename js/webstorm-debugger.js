@@ -139,15 +139,14 @@ const debugging = {
             console.Log = console.log;
             console.Error = console.error;
             console.log = function(){
-                for ( let arg of arguments )
-                    lines.push( arg );
+                for ( let arg of arguments ) lines.push( arg );
                 debugging.write( "", lines );
                 console.Log.apply( this, arguments );
             };
             console.error = function(){
-                for ( let arg of arguments )
-                    lines.push( `<em>${arg}</em>` );
+                for ( let arg of arguments ) lines.push( `<em>${arg}</em>` );
                 debugging.write( "", lines );
+                console.Error.apply( this, arguments );
             }
         }
 
