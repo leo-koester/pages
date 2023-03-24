@@ -1,5 +1,5 @@
 /**
- * @Filename: debugger.js
+ * @Filename: webstorm-debugger.js
  * @Author:   Leonidio Koester Junior (koesterjunior0350)
  * @Date:     2023-02-04
  * @Purpose:  Provides tools for debugging inside Webstorm's preview
