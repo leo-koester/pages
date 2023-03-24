@@ -137,12 +137,18 @@ const debugging = {
          * */
         if ( navigator.userAgent.indexOf("Edg/") === -1 ){
             console.Log = console.log;
+            console.Error = console.error;
             console.log = function(){
                 for ( let arg of arguments )
                     lines.push( arg );
                 debugging.write( "", lines );
                 console.Log.apply( this, arguments );
             };
+            console.error = function(){
+                for ( let arg of arguments )
+                    lines.push( `<em>${arg}</em>` );
+                debugging.write( "", lines );
+            }
         }
 
         this.initialized = true;
